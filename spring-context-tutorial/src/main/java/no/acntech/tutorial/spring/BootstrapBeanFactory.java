@@ -19,7 +19,6 @@ public class BootstrapBeanFactory {
         LOGGER.info("{} Spring Bean definitions loaded from spring.xml", beanDefinitionsFound);
 
         SimpleSpringBean simpleSpringBean = beanFactory.getBean(SimpleSpringBean.class);
-
         LOGGER.info("Spring says: {}", simpleSpringBean.getMessage());
     }
 }

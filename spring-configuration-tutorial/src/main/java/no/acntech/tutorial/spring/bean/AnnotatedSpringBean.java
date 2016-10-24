@@ -2,17 +2,20 @@ package no.acntech.tutorial.spring.bean;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
-public class SimpleSpringBean {
+@Component
+public class AnnotatedSpringBean {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SimpleSpringBean.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AnnotatedSpringBean.class);
 
     private String message;
 
-    public SimpleSpringBean() {
+    public AnnotatedSpringBean() {
+        this("Hello Annotated Component Spring Configuration!");
     }
 
-    public SimpleSpringBean(String message) {
+    public AnnotatedSpringBean(String message) {
         this.message = message;
         LOGGER.info("Bean created");
     }

@@ -1,26 +1,26 @@
 package no.acntech.tutorial.spring;
 
-import no.acntech.tutorial.spring.bean.AnotherSimpleSpringBean;
 import no.acntech.tutorial.spring.bean.SimpleSpringBean;
 import no.acntech.tutorial.spring.config.SpringConfig;
+import no.acntech.tutorial.spring.config.TestSpringConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.env.AbstractEnvironment;
 
-public class BootstrapApplicationContext {
+public class BootstrapProfileAwareApplicationContext {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(BootstrapApplicationContext.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(BootstrapProfileAwareApplicationContext.class);
 
     public static void main(String[] args) {
         LOGGER.info("Bootstrapping Spring Application Context");
 
-        ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+        System.setProperty(AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME, "test");
+
+        ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class, TestSpringConfig.class);
 
         SimpleSpringBean simpleSpringBean = context.getBean(SimpleSpringBean.class);
         LOGGER.info("Spring says: {}", simpleSpringBean.getMessage());
-
-        AnotherSimpleSpringBean anotherSimpleSpringBean = context.getBean(AnotherSimpleSpringBean.class);
-        LOGGER.info("Spring says: {}", anotherSimpleSpringBean.getMessage());
     }
 }

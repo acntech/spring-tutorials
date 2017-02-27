@@ -21,5 +21,6 @@
     <modules>
         <module>spring-context-tutorial</module>
         <module>spring-configuration-tutorial</module>
+        <module>spring-transaction-tutorial</module>
     </modules>
 </project>
